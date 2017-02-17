@@ -16,9 +16,4 @@ class HotelsController < ApplicationController
     def set_hotel
       @hotel = Hotel.find(params[:id])
     end
-
-    # Only allow a trusted parameter "white list" through.
-    def hotel_params
-      params.require(:hotel).permit(:name, :address, :phone_number)
-    end
 end
