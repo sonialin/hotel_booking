@@ -28,4 +28,13 @@ RSpec.describe BookingsController, :type => :controller do
       response.body == @expected
     end
   end
+
+  describe "POST #create" do
+    it "saves the booking record" do
+      booking_params = { room_id: 3, user_id: 1, comment: 'Will call before arrival', 
+                        check_in_on: "2017-02-10 20:00:00", check_out_on: "2017-02-13 10:00:00" }
+      response = RestClient.post 'http://localhost:3000/bookings', :booking => booking_params
+      response.code == 201
+    end
+  end
 end
