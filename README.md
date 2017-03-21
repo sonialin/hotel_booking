@@ -19,6 +19,4 @@ To simulates a client app's actions, unit tests are available.
 bundle exec rspec
 
 5. To run individual tests:
-rspec spec/controllers/rooms_controller_spec.rb -e "responds to listing request successfully with an HTTP 200 status code"
-
-Replace the above command with the desired controller and the test
+rspec spec/controllers/rooms_controller_spec.rb -e "responds to listing request successfully with an HTTP 200 status code". Replace the above command with the desired controller and the test
