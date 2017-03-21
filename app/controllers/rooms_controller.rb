@@ -1,14 +1,27 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
-  def index
-    @rooms = Room.all
+  BAD_REQUEST_SELECTION = 2 #randomly designated number out of 10 that stipulates an error should be thrown
 
-    render json: @rooms
+  def index
+    request_selection = (1..10).to_a.sample
+
+    if request_selection == BAD_REQUEST_SELECTION
+      raise 'error'
+    else
+      @rooms = Room.all
+      render json: @rooms
+    end
   end
 
   def show
-    render json: @room
+    request_selection = (1..10).to_a.sample
+
+    if request_selection == BAD_REQUEST_SELECTION
+      raise 'error'
+    else
+      render json: @room
+    end
   end
 
   private
