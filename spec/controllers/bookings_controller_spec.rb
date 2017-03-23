@@ -3,12 +3,31 @@ require "rails_helper"
 RSpec.describe BookingsController, :type => :controller do
   describe "GET #index" do
     it "responds to listing request successfully with an HTTP 200 status code" do
-      begin
-        RestClient.get 'http://localhost:3000/bookings'
-      rescue
-        puts 'There\'s something wrong.'
+      number_of_errors = 0
+      current_wait_time = 0
+      number_of_requests = 0
+
+      def wait_time(nth_error)
+        1 + (nth_error - 1) * 2
       end
 
+      def num_with_pluralized_word(num, noun)
+        num.to_s + ' ' + noun.pluralize(num)
+      end
+
+      begin
+        number_of_requests += 1
+        RestClient.get 'http://localhost:3000/bookings'
+      rescue
+        number_of_errors += 1
+        current_wait_time = wait_time(number_of_errors)
+        puts 'Something\'s wrong.'
+        puts "Retrying in #{num_with_pluralized_word(current_wait_time, 'second')}."
+        sleep(current_wait_time)
+        retry
+      end
+
+      puts "Request successful after #{num_with_pluralized_word(number_of_requests, 'try')}."
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
