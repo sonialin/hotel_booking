@@ -86,7 +86,7 @@ RSpec.describe BookingsController, :type => :controller do
                         check_in_on: "2017-02-10 20:00:00", check_out_on: "2017-02-13 10:00:00" }
 
       begin
-        RestClient.get 'http://localhost:3000/bookings'
+        response = RestClient.post 'http://localhost:3000/bookings', :booking => booking_params
       rescue
         puts 'There\'s something wrong.'
       end
