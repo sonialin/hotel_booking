@@ -43,6 +43,9 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    ar-octopus (0.9.0)
+      activerecord (>= 4.0.0)
+      activesupport (>= 4.0.0)
     arel (7.1.4)
     bcrypt (3.1.11)
     builder (3.2.3)
@@ -201,7 +204,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    warden (1.2.6)
+    warden (1.2.7)
       rack (>= 1.0)
     web-console (3.4.0)
       actionview (>= 5.0)
@@ -217,6 +220,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  ar-octopus
   byebug
   coffee-rails (~> 4.2)
   devise

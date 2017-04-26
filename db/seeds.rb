@@ -34,11 +34,20 @@ Room.create(name: 'Snow Hey Oh', hotel_id: 3)
 Room.create(name: 'Let Your Hair Down', hotel_id: 3)
 Room.create(name: 'Californication', hotel_id: 3)
 
-User.create(
-    :email                 => "abc123@luc.edu",
+index = 1
+1000.times do
+  email = 'abc' + index.to_s + '@xyz.sss'
+  location = ['america', 'europe', 'asia', 'others'].sample
+
+  User.create(
+    :email                 => email,
     :password              => "comp439",
-    :password_confirmation => "comp439"
-)
+    :password_confirmation => "comp439",
+    :location              => location
+  )
+
+  index += 1
+end
 
 Booking.create(room_id: 1, user_id: 1, check_in_on: "2016-02-06 17:00:00", check_out_on: "2016-02-08 11:00:00")
 

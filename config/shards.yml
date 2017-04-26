@@ -1,0 +1,35 @@
+octopus:
+  environments:
+    - development
+    - production
+  replicated: true
+  fully_replicated: true
+  development:
+    america:
+      host: localhost
+      adapter: sqlite3
+      database: db/development.sqlite3
+      pool: 5
+      timeout: 5000
+    europe:
+      host: localhost
+      adapter: sqlite3
+      database: db/development.sqlite3
+      pool: 5
+      timeout: 5000
+    asia:
+      host: localhost
+      adapter: sqlite3
+      database: db/development.sqlite3
+      pool: 5
+      timeout: 5000
+    others:
+      host: localhost
+      adapter: sqlite3
+      database: db/development.sqlite3
+      pool: 5
+      timeout: 5000
+  production:
+    shard_one:
+      host: localhost
+      database: app_production

@@ -40,7 +40,7 @@ RSpec.describe BookingsController, :type => :controller do
       number_of_requests = 0
       number_of_errors = 0
       
-      2000.times do
+      100.times do
         number_of_requests += 1       
         begin
           RestClient.get 'http://localhost:3000/bookings/1'
@@ -101,7 +101,7 @@ RSpec.describe BookingsController, :type => :controller do
 
   describe "POST #create" do
     it "saves the booking record" do
-      booking_params = { room_id: 3, user_id: 1, comment: 'Will call before arrival', 
+      booking_params = { room_id: 3, user_id: 34, comment: 'Will call before arrival', 
                         check_in_on: "2017-02-10 20:00:00", check_out_on: "2017-02-13 10:00:00" }
 
       begin

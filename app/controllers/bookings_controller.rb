@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show]
 
   BAD_REQUEST_SELECTION = 2 #randomly designated number out of 10 that stipulates an error should be thrown
-  BAD_REQUEST_SELECTION2 = [1, 2, 4, 7, 8, 0]
+  BAD_REQUEST_SELECTION2 = [1]
 
   def index
     request_selection = (1..10).to_a.sample
