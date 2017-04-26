@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
 
   BAD_REQUEST_SELECTION = 2 #randomly designated number out of 10 that stipulates an error should be thrown
   BAD_REQUEST_SELECTION2 = [1]
+  CURRENT_LOCATION = "europe"
 
   def index
     request_selection = (1..10).to_a.sample
@@ -10,7 +11,7 @@ class BookingsController < ApplicationController
     if BAD_REQUEST_SELECTION2.include? request_selection
       raise 'error'
     else
-      @bookings = Booking.all
+      @bookings = Booking.using(CURRENT_LOCATION.to_sym).all
       render json: @bookings
     end
   end
@@ -44,7 +45,7 @@ class BookingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
-      @booking = Booking.find(params[:id])
+      @booking = Booking.using(CURRENT_LOCATION.to_sym).find(params[:id])
     end
 
     def booking_params
